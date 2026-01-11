@@ -1,6 +1,30 @@
+import { useState } from 'react';
 import Section from "./Section.jsx";
 
 export default function Contact() {
+  const [result, setResult] = useState("");
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setResult("Sending....");
+    const formData = new FormData(event.target);
+
+    formData.append("access_key", "16180555-d188-45eb-8f20-5e220e341768");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    setResult(data.success ? "Success!" : "Error");
+    
+    if (data.success) {
+      event.target.reset();
+    }
+  };
+
   return (
     <Section id="contact" title="Get In Touch">
       <div className="grid lg:grid-cols-2 gap-16">
@@ -50,22 +74,26 @@ export default function Contact() {
           </div>
         </div>
 
-        <form className="p-10 rounded-3xl bg-white border border-neutral-200 space-y-6 shadow-xl shadow-neutral-100/50">
+        <form className="p-10 rounded-3xl bg-white border border-neutral-200 space-y-6 shadow-xl shadow-neutral-100/50" onSubmit={onSubmit}>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-2">
               <label className="text-sm font-bold text-neutral-500 uppercase tracking-wider">Full Name</label>
               <input
                 type="text"
+                name="name"
                 className="w-full bg-white border border-neutral-200 rounded-xl px-5 py-3 text-neutral-900 focus:border-yellow-400 transition-colors outline-none"
                 placeholder="John Doe"
+                required
               />
             </div>
             <div className="space-y-2">
               <label className="text-sm font-bold text-neutral-500 uppercase tracking-wider">Email Address</label>
               <input
                 type="email"
+                name="email"
                 className="w-full bg-white border border-neutral-200 rounded-xl px-5 py-3 text-neutral-900 focus:border-yellow-400 transition-colors outline-none"
                 placeholder="john@example.com"
+                required
               />
             </div>
           </div>
@@ -73,16 +101,20 @@ export default function Contact() {
             <label className="text-sm font-bold text-neutral-500 uppercase tracking-wider">Subject</label>
             <input
               type="text"
+              name="subject"
               className="w-full bg-white border border-neutral-200 rounded-xl px-5 py-3 text-neutral-900 focus:border-yellow-400 transition-colors outline-none"
               placeholder="Project Inquiry"
+              required
             />
           </div>
           <div className="space-y-2">
             <label className="text-sm font-bold text-neutral-500 uppercase tracking-wider">Your Message</label>
             <textarea
               rows="4"
+              name="message"
               className="w-full bg-white border border-neutral-200 rounded-xl px-5 py-3 text-neutral-900 focus:border-yellow-400 transition-colors outline-none resize-none"
               placeholder="Tell us about your project..."
+              required
             />
           </div>
           <button
@@ -91,6 +123,11 @@ export default function Contact() {
           >
             Send Message
           </button>
+          {result && (
+            <div className={`text-center text-sm font-medium ${result === "Success!" ? "text-green-600" : "text-red-600"}`}>
+              {result}
+            </div>
+          )}
         </form>
       </div>
     </Section>
