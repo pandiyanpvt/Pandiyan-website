@@ -19,9 +19,9 @@ export default function PageLinkCards() {
                         to={p.path}
                         className="group p-8 rounded-3xl bg-white border border-neutral-100 hover:border-yellow-400 hover:shadow-2xl hover:shadow-yellow-400/5 transition-all duration-300"
                     >
-                        <div className="text-3xl mb-4 group-hover:scale-110 transition-transform duration-300 inline-block">{p.icon}</div>
-                        <h3 className="text-xl font-bold text-neutral-900 mb-2 group-hover:text-yellow-600 transition-colors uppercase tracking-tight">{p.title}</h3>
-                        <p className="text-neutral-500 text-sm leading-relaxed">{p.desc}</p>
+                        <div className="text-4xl md:text-5xl mb-4 group-hover:scale-110 transition-transform duration-300 inline-block">{p.icon}</div>
+                        <h3 className="text-2xl md:text-3xl font-bold text-neutral-900 mb-3 group-hover:text-yellow-600 transition-colors uppercase tracking-tight">{p.title}</h3>
+                        <p className="text-base md:text-lg text-neutral-500 leading-relaxed">{p.desc}</p>
                     </Link>
                 ))}
             </div>

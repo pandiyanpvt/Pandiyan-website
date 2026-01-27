@@ -1,27 +1,36 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import Section from "./Section.jsx";
 
 export default function Contact() {
   const [result, setResult] = useState("");
 
+  // EmailJS Configuration
+  const SERVICE_ID = "service_mxlmuwe";
+  const TEMPLATE_ID = "template_oa24au8";
+  const PUBLIC_KEY = "0FEK2yxXJhvzY_2Pn";
+
   const onSubmit = async (event) => {
     event.preventDefault();
     setResult("Sending....");
-    const formData = new FormData(event.target);
 
-    formData.append("access_key", "16180555-d188-45eb-8f20-5e220e341768");
+    try {
+      const response = await emailjs.sendForm(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        event.target,
+        PUBLIC_KEY
+      );
 
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData,
-    });
-
-    const data = await response.json();
-
-    setResult(data.success ? "Success!" : "Error");
-    
-    if (data.success) {
-      event.target.reset();
+      if (response.status === 200) {
+        setResult("Success!");
+        event.target.reset();
+      } else {
+        setResult("Error");
+      }
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      setResult("Error");
     }
   };
 
@@ -31,7 +40,7 @@ export default function Contact() {
         <div>
           <h3 className="text-2xl font-bold text-neutral-900 mb-6">Let's discuss your project</h3>
           <p className="text-neutral-600 mb-10 leading-relaxed text-lg">
-            Have a project in mind? We'd love to hear from you. Fill out the form and our team will get back to you within 24 hours.
+            Have a project in mind? We'd love to hear from you. Fill out the form and our team will get back within 24 hours.
           </p>
 
           <div className="space-y-6">

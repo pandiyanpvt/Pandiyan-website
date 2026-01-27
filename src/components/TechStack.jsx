@@ -31,7 +31,7 @@ const itemVariants = {
 
 export default function TechStack() {
     return (
-        <Section id="tech" title="Our Technology Core">
+        <Section id="tech">
             <motion.div
                 variants={containerVariants}
                 initial="hidden"

@@ -55,6 +55,15 @@ const services = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
       </svg>
     )
+  },
+  {
+    title: "Social Media Management",
+    description: "Comprehensive social media strategies, content creation, and community management to grow your online presence and engage your audience.",
+    icon: (
+      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+      </svg>
+    )
   }
 ];
 
@@ -79,27 +88,29 @@ const itemVariants = {
 
 export default function Services() {
   return (
-    <Section id="service" title="Our Services">
+    <Section id="service">
       <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8 lg:gap-10 2xl:gap-12"
       >
         {services.map((service, index) => (
           <motion.div
             key={index}
             variants={itemVariants}
-            className="p-8 rounded-2xl bg-white border border-neutral-100 hover:border-yellow-400/50 transition-all duration-300 group hover:-translate-y-2 shadow-sm hover:shadow-xl"
+            className="p-4 sm:p-6 md:p-8 lg:p-10 2xl:p-12 rounded-xl sm:rounded-2xl bg-white border border-neutral-100 hover:border-yellow-400/50 transition-all duration-300 group hover:-translate-y-2 shadow-sm hover:shadow-xl"
           >
-            <div className="mb-6 p-4 rounded-xl bg-yellow-400/10 inline-block group-hover:bg-yellow-400 transition-colors duration-300">
+            <div className="mb-4 sm:mb-6 md:mb-8 p-3 sm:p-4 md:p-5 rounded-lg sm:rounded-xl bg-yellow-400/10 inline-block group-hover:bg-yellow-400 transition-colors duration-300">
               <div className="text-yellow-400 group-hover:text-black transition-colors duration-300 [&_svg]:transition-colors">
-                {service.icon}
+                <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 2xl:w-16 2xl:h-16">
+                  {service.icon}
+                </div>
               </div>
             </div>
-            <h3 className="text-xl font-bold text-neutral-900 mb-4 transition-colors">{service.title}</h3>
-            <p className="text-neutral-600 leading-relaxed transition-colors">
+            <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl 2xl:text-4xl font-bold text-neutral-900 mb-2 sm:mb-3 md:mb-4 transition-colors">{service.title}</h3>
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl 2xl:text-2xl text-neutral-600 leading-relaxed transition-colors">
               {service.description}
             </p>
           </motion.div>

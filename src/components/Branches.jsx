@@ -16,12 +16,6 @@ function BranchCard({ title = "PANDIYAN", subtitle = "Software Excellence Center
           </div>
           <div className="flex items-center gap-3 group/item">
             <span className="text-yellow-400">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-            </span>
-            <span className="text-neutral-500 group-hover/item:text-neutral-900 transition-colors">{phone}</span>
-          </div>
-          <div className="flex items-center gap-3 group/item">
-            <span className="text-yellow-400">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
             </span>
             <span className="text-neutral-500 group-hover/item:text-neutral-900 transition-colors">{email}</span>
@@ -58,18 +52,33 @@ export default function Branches() {
               </svg>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 md:gap-x-28 md:gap-y-16 items-center">
-              <div className="md:justify-self-end transform hover:scale-[1.03] transition-transform duration-500">
-                <BranchCard address="102, Old Bus Stand, Salem" phone="+91 72000 00001" email="info@pandiyan.dev" />
+            <div className="grid md:grid-cols-3 gap-8 md:gap-x-12 md:gap-y-16 items-center justify-items-center">
+              <div className="transform hover:scale-[1.03] transition-transform duration-500">
+                <BranchCard 
+                  title="COLOMBO" 
+                  subtitle="Sri Lanka Branch"
+                  address="Colombo, Sri Lanka" 
+                  phone="+94 11 123 4567" 
+                  email="colombo@pandiyan.dev" 
+                />
               </div>
-              <div className="md:justify-self-start transform hover:scale-[1.03] transition-transform duration-500">
-                <BranchCard address="12, OMR, IT Expressway, Chennai" phone="+91 72000 00002" email="chennai@pandiyan.dev" />
+              <div className="transform hover:scale-[1.03] transition-transform duration-500">
+                <BranchCard 
+                  title="JAFFNA" 
+                  subtitle="Sri Lanka Branch"
+                  address="Jaffna, Sri Lanka" 
+                  phone="+94 21 123 4567" 
+                  email="jaffna@pandiyan.dev" 
+                />
               </div>
-              <div className="md:justify-self-end transform hover:scale-[1.03] transition-transform duration-500">
-                <BranchCard address="221B, Gandhipuram, Coimbatore" phone="+91 72000 00003" email="cbe@pandiyan.dev" />
-              </div>
-              <div className="md:justify-self-start transform hover:scale-[1.03] transition-transform duration-500">
-                <BranchCard address="45, Anna Nagar, Madurai" phone="+91 72000 00004" email="madurai@pandiyan.dev" />
+              <div className="transform hover:scale-[1.03] transition-transform duration-500">
+                <BranchCard 
+                  title="CHENNAI" 
+                  subtitle="India Branch"
+                  address="Chennai, Tamil Nadu, India" 
+                  phone="+91 44 1234 5678" 
+                  email="chennai@pandiyan.dev" 
+                />
               </div>
             </div>
           </div>
