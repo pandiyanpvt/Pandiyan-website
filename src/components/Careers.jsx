@@ -3,11 +3,14 @@ import Section from "./Section.jsx";
 
 
 const jobs = [
-  { id: 1, title: "Senior React Developer", type: "Full-time", location: "Remote / Salem", department: "Engineering" },
-  { id: 2, title: "Full Stack Engineer (Node.js)", type: "Full-time", location: "Chennai / Hybrid", department: "Engineering" },
-  { id: 3, title: "UI/UX Designer", type: "Contract", location: "Remote", department: "Design" },
-  { id: 4, title: "DevOps Engineer", type: "Full-time", location: "Remote / Salem", department: "Operations" },
-  { id: 5, title: "Product Manager", type: "Full-time", location: "Remote", department: "Product" },
+  { id: 1, title: "Full Stack Developer", type: "Full-time", location: "Remote", department: "Engineering" },
+  { id: 2, title: "Full Stack Developer", type: "Intern", location: "Remote", department: "Engineering" },
+  { id: 3, title: "UI/UX Designer", type: "Full-time", location: "Remote", department: "Design" },
+  { id: 4, title: "UI/UX Designer", type: "Intern", location: "Remote", department: "Design" },
+  { id: 5, title: "Frontend Developer", type: "Full-time", location: "Remote", department: "Engineering" },
+  { id: 6, title: "Frontend Developer", type: "Intern", location: "Remote", department: "Engineering" },
+  { id: 7, title: "Backend Developer", type: "Full-time", location: "Remote", department: "Engineering" },
+  { id: 8, title: "Backend Developer", type: "Intern", location: "Remote", department: "Engineering" },
 ];
 
 export default function Careers() {
@@ -24,61 +27,25 @@ export default function Careers() {
   return (
     <>
       <Section id="careers" title="Join Our Team">
-        <div className="grid lg:grid-cols-3 gap-12">
-          <div className="lg:col-span-1">
-            <h3 className="text-2xl font-bold text-neutral-900 mb-6 md:mt-2">Why work with us?</h3>
-            <ul className="space-y-4 text-neutral-600">
-              <li className="flex items-start gap-3">
-                <span className="text-yellow-400 font-bold">✓</span>
-                Remote-first culture with flexible working hours.
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-yellow-400 font-bold">✓</span>
-                Regular skill-building workshops and certifications.
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-yellow-400 font-bold">✓</span>
-                Competitive health insurance and wellness benefits.
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-yellow-400 font-bold">✓</span>
-                Opportunity to work on global projects with cutting-edge tech.
-              </li>
-            </ul>
-            <p className="mt-10 text-neutral-700 font-semibold italic">
-              Don't see a role? Send your resume anyway to <br />
-              <span className="text-yellow-400">careers@pandiyan.dev</span>
-            </p>
-          </div>
-
-          <div className="lg:col-span-2 space-y-4">
-            {jobs.map((job) => (
-              <div
-                key={job.id}
-                className={`group p-6 rounded-xl bg-neutral-100 border transition-all flex flex-col md:flex-row md:items-center justify-between gap-4 ${selectedJob?.id === job.id ? 'border-yellow-400 bg-yellow-50/50' : 'border-neutral-200 hover:border-yellow-400/30'}`}
-              >
-                <div>
-                  <h4 className="text-xl font-bold text-neutral-900 group-hover:text-yellow-400 transition-colors uppercase tracking-tight">{job.title}</h4>
-                  <div className="flex gap-4 mt-2 text-sm text-neutral-500">
-                    <span>{job.location}</span>
-                    <span>•</span>
-                    <span>{job.type}</span>
-                    <span className="hidden sm:inline">•</span>
-                    <span className="hidden sm:inline text-yellow-600 font-medium">{job.department}</span>
-                  </div>
-                </div>
-                <button
-                  onClick={() => handleApplyClick(job)}
-                  className={`px-6 py-2 rounded-full font-bold text-sm transition-all border ${selectedJob?.id === job.id
-                    ? 'bg-yellow-400 text-black border-yellow-400'
-                    : 'bg-neutral-200 hover:bg-yellow-400 hover:text-black text-neutral-900 border-neutral-300 hover:border-yellow-400'
-                    }`}
-                >
-                  {selectedJob?.id === job.id ? 'Selected' : 'Apply Now'}
-                </button>
-              </div>
-            ))}
-          </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {jobs.map((job) => (
+            <div
+              key={job.id}
+              className={`group p-8 rounded-3xl bg-white border-2 transition-all flex flex-col items-center justify-center min-h-[200px] ${
+                selectedJob?.id === job.id 
+                  ? 'border-yellow-400 bg-yellow-50/30 shadow-xl shadow-yellow-400/10' 
+                  : 'border-neutral-200 hover:border-yellow-400/50 hover:shadow-xl hover:shadow-yellow-400/5'
+              }`}
+              onClick={() => handleApplyClick(job)}
+            >
+              <h4 className="text-xl font-black text-neutral-900 text-center group-hover:text-yellow-500 transition-colors mb-2">
+                {job.title}
+              </h4>
+              <span className="text-sm font-bold text-neutral-500 uppercase tracking-wider">
+                {job.type}
+              </span>
+            </div>
+          ))}
         </div>
 
         {/* Inline Application Form */}
@@ -89,6 +56,9 @@ export default function Careers() {
                 <h3 className="text-3xl font-black text-neutral-900 mb-4">
                   Apply for <span className="text-yellow-500">{selectedJob.title}</span>
                 </h3>
+                <p className="text-neutral-500 mb-2">
+                  Position: <span className="font-semibold text-neutral-700">{selectedJob.type}</span> • Location: <span className="font-semibold text-neutral-700">{selectedJob.location}</span>
+                </p>
                 <p className="text-neutral-500">Please fill out the form below to submit your application.</p>
               </div>
 
@@ -97,19 +67,36 @@ export default function Careers() {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-xs font-bold text-neutral-500 uppercase tracking-widest">Full Name *</label>
-                    <input type="text" required className="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-5 py-4 text-neutral-900 focus:border-yellow-400 focus:ring-4 focus:ring-yellow-400/10 transition-all outline-none" placeholder="Enter your full name" />
+                    <input type="text" name="fullName" required className="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-5 py-4 text-neutral-900 focus:border-yellow-400 focus:ring-4 focus:ring-yellow-400/10 transition-all outline-none" placeholder="Enter your full name" />
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs font-bold text-neutral-500 uppercase tracking-widest">Email Address *</label>
-                    <input type="email" required className="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-5 py-4 text-neutral-900 focus:border-yellow-400 focus:ring-4 focus:ring-yellow-400/10 transition-all outline-none" placeholder="name@example.com" />
+                    <input type="email" name="email" required className="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-5 py-4 text-neutral-900 focus:border-yellow-400 focus:ring-4 focus:ring-yellow-400/10 transition-all outline-none" placeholder="name@example.com" />
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs font-bold text-neutral-500 uppercase tracking-widest">Phone Number *</label>
-                    <input type="tel" required className="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-5 py-4 text-neutral-900 focus:border-yellow-400 focus:ring-4 focus:ring-yellow-400/10 transition-all outline-none" placeholder="+91 98765 43210" />
+                    <input type="tel" name="phone" required className="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-5 py-4 text-neutral-900 focus:border-yellow-400 focus:ring-4 focus:ring-yellow-400/10 transition-all outline-none" placeholder="+91 98765 43210" />
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs font-bold text-neutral-500 uppercase tracking-widest">Portfolio / LinkedIn</label>
-                    <input type="url" className="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-5 py-4 text-neutral-900 focus:border-yellow-400 focus:ring-4 focus:ring-yellow-400/10 transition-all outline-none" placeholder="https://linkedin.com/in/..." />
+                    <input type="url" name="portfolio" className="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-5 py-4 text-neutral-900 focus:border-yellow-400 focus:ring-4 focus:ring-yellow-400/10 transition-all outline-none" placeholder="https://linkedin.com/in/..." />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold text-neutral-500 uppercase tracking-widest">Job Type *</label>
+                    <select name="jobType" required className="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-5 py-4 text-neutral-900 focus:border-yellow-400 focus:ring-4 focus:ring-yellow-400/10 transition-all outline-none appearance-none">
+                      <option value="">Select job type</option>
+                      <option value="full-time">Full-time</option>
+                      <option value="intern">Intern</option>
+                    </select>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold text-neutral-500 uppercase tracking-widest">Location Preference *</label>
+                    <select name="location" required className="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-5 py-4 text-neutral-900 focus:border-yellow-400 focus:ring-4 focus:ring-yellow-400/10 transition-all outline-none appearance-none">
+                      <option value="">Select location</option>
+                      <option value="remote">Remote</option>
+                      <option value="on-site">On-site</option>
+                      <option value="hybrid">Hybrid</option>
+                    </select>
                   </div>
                 </div>
 

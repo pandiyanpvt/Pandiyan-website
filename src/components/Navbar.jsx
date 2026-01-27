@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import logo from '../assets/logo.jpg';
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -45,24 +44,24 @@ export default function Navbar() {
       ? 'bg-transparent text-white border-transparent py-4'
       : 'bg-white/70 backdrop-blur-2xl border-b border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] text-neutral-900 py-2'
       }`}>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+      <div className="mx-auto max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl px-4 xs:px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 3xl:px-24 4xl:px-32">
+        <div className="flex items-center justify-between h-14 sm:h-16 md:h-20 lg:h-24">
           {/* Left: Brand */}
           <Link
             to="/"
             onClick={handleNavClick}
-            className="flex items-center gap-3 group"
+            className="flex items-center gap-2 sm:gap-3 group"
           >
-            <div className={`w-12 h-12 overflow-hidden ${isTransparent ? 'border-2 border-white/20' : 'border-2 border-yellow-400/20'} rounded-xl flex items-center justify-center transform group-hover:scale-110 transition-all duration-300 shadow-lg`}>
-              <img src={logo} alt="Pandiyan Logo" className="w-full h-full object-cover" />
+            <div className={`flex items-center justify-center transform group-hover:scale-110 transition-all duration-300`}>
+              <img src="/Pandiyan_logo.png" alt="Pandiyan Logo" className="h-8 xs:h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain" />
             </div>
-            <span className={`${isTransparent ? 'text-white' : 'text-neutral-900'} font-black tracking-tighter text-2xl group-hover:text-yellow-500 transition-colors`}>
+            <span className={`${isTransparent ? 'text-white' : 'text-neutral-900'} font-black tracking-tighter text-base xs:text-lg sm:text-xl md:text-2xl lg:text-2xl 2xl:text-3xl group-hover:text-yellow-500 transition-colors`}>
               Pandiyan
             </span>
           </Link>
 
           {/* Center: Desktop Menu */}
-          <nav className="hidden xl:flex items-center gap-3 text-[16px] font-bold tracking-tight">
+          <nav className="hidden xl:flex items-center gap-4 2xl:gap-6 3xl:gap-8 text-sm 2xl:text-base 3xl:text-lg 4xl:text-lg font-bold tracking-tight">
             {navLinks.map((link) => {
               const isContact = link.label === 'Contact Us';
               const isActive = location.pathname === link.to;
@@ -98,7 +97,7 @@ export default function Navbar() {
             <Link
               to="/contact"
               onClick={handleNavClick}
-              className={`hidden md:block px-8 py-3 ${isTransparent ? 'bg-white text-black hover:bg-neutral-200' : 'bg-neutral-900 text-white hover:bg-neutral-800'} rounded-full font-black text-sm uppercase tracking-widest transition-all shadow-lg active:scale-95`}
+              className={`hidden md:block px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 py-1.5 sm:py-2 lg:py-2.5 2xl:py-3 ${isTransparent ? 'bg-white text-black hover:bg-neutral-200' : 'bg-neutral-900 text-white hover:bg-neutral-800'} rounded-full font-black text-xs sm:text-xs md:text-sm lg:text-sm 2xl:text-base 3xl:text-lg uppercase tracking-widest transition-all shadow-lg active:scale-95`}
             >
               Let's Talk
             </Link>
@@ -128,7 +127,7 @@ export default function Navbar() {
               key={link.label}
               to={link.to}
               onClick={handleNavClick}
-              className={`block text-3xl font-black uppercase tracking-tighter transition-colors ${location.pathname === link.to
+              className={`block text-xl sm:text-2xl font-black uppercase tracking-tighter transition-colors ${location.pathname === link.to
                 ? 'text-yellow-500'
                 : 'text-neutral-900 hover:text-yellow-500'
                 }`}

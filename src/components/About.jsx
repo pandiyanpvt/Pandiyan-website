@@ -2,13 +2,6 @@ import { motion } from "framer-motion";
 import Section from "./Section.jsx";
 
 export default function About() {
-  const stats = [
-    { label: "Projects Delivered", value: "250+" },
-    { label: "Happy Clients", value: "120+" },
-    { label: "Expert Engineers", value: "45+" },
-    { label: "Years Experience", value: "10+" },
-  ];
-
   return (
     <section id="about" className="relative bg-white py-24 md:py-32 overflow-hidden transition-colors duration-300">
       {/* Decorative Elements */}
@@ -59,16 +52,6 @@ export default function About() {
             <p className="text-neutral-500 leading-relaxed">
               Since 2014, we have partnered with startups and enterprises alike to transform complex challenges into elegant, high-performance solutions. Our approach blends technical rigor with creative strategy.
             </p>
-
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-8 pt-8 border-t border-neutral-100">
-              {stats.map((stat, idx) => (
-                <div key={idx}>
-                  <div className="text-3xl md:text-4xl font-black text-neutral-900 mb-1">{stat.value}</div>
-                  <div className="text-xs uppercase tracking-wider text-neutral-500 font-bold">{stat.label}</div>
-                </div>
-              ))}
-            </div>
 
             <div className="pt-4">
               <a href="#contact" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-neutral-900 hover:text-yellow-400 transition-colors group">

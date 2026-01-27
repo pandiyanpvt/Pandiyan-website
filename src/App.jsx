@@ -12,6 +12,8 @@ import BranchesPage from './pages/BranchesPage.jsx'
 import ContactPage from './pages/ContactPage.jsx'
 import CareersPage from './pages/CareersPage.jsx'
 import CompliancePage from './pages/CompliancePage.jsx'
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage.jsx'
+import TermsOfServicePage from './pages/TermsOfServicePage.jsx'
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -136,6 +138,32 @@ function AnimatedRoutes() {
             </motion.div>
           }
         />
+        <Route
+          path="/privacy-policy"
+          element={
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              <PrivacyPolicyPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/terms-of-service"
+          element={
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              <TermsOfServicePage />
+            </motion.div>
+          }
+        />
       </Routes>
     </AnimatePresence>
   );
@@ -145,9 +173,9 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
-        <div className="bg-white text-neutral-900 min-h-screen flex flex-col transition-colors duration-300">
+        <div className="bg-white text-neutral-900 min-h-screen flex flex-col transition-colors duration-300 overflow-x-hidden">
           <Navbar />
-          <main className="flex-grow scroll-smooth">
+          <main className="flex-grow scroll-smooth overflow-x-hidden">
             <AnimatedRoutes />
           </main>
           <Footer />
