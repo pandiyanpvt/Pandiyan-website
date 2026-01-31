@@ -27,7 +27,7 @@ export default function Hero() {
   return (
     <section 
       id="home" 
-      className="relative min-h-[90vh] lg:min-h-screen flex items-center overflow-hidden pt-20"
+      className="relative min-h-[80dvh] sm:min-h-[90vh] lg:min-h-screen flex items-center overflow-hidden pt-12 sm:pt-20 pb-8 sm:pb-0"
       style={{
         backgroundImage: 'url(/hero-tech.png)',
         backgroundSize: 'cover',
@@ -36,10 +36,10 @@ export default function Hero() {
       }}
     >
       {/* Dark Overlay for better text readability */}
-      <div className="absolute inset-0 bg-[#1a1f3c]/80 z-0"></div>
+      <div className="absolute inset-0 bg-[#1a1f3c]/80 z-0" />
 
       {/* Background Decorative Elements */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-hidden">
         {/* Network Pattern */}
         <div
           className="absolute inset-0 opacity-20"
@@ -49,14 +49,14 @@ export default function Hero() {
           }}
         />
 
-        {/* Animated Glows */}
+        {/* Animated Glows - full size on desktop, smaller on mobile */}
         <motion.div
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3]
           }}
           transition={{ duration: 8, repeat: Infinity }}
-          className="absolute top-1/4 -left-20 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] mix-blend-multiply"
+          className="absolute top-1/4 -left-20 w-[200px] h-[200px] sm:w-[500px] sm:h-[500px] bg-blue-600/20 rounded-full blur-[80px] sm:blur-[120px] mix-blend-multiply"
         />
         <motion.div
           animate={{
@@ -64,7 +64,7 @@ export default function Hero() {
             opacity: [0.2, 0.4, 0.2]
           }}
           transition={{ duration: 10, repeat: Infinity, delay: 2 }}
-          className="absolute bottom-1/4 -right-20 w-[600px] h-[600px] bg-indigo-600/10 rounded-full blur-[150px] mix-blend-multiply"
+          className="absolute bottom-1/4 -right-20 w-[240px] h-[240px] sm:w-[600px] sm:h-[600px] bg-indigo-600/10 rounded-full blur-[100px] sm:blur-[150px] mix-blend-multiply"
         />
         <motion.div
           animate={{
@@ -72,32 +72,32 @@ export default function Hero() {
             opacity: [0.2, 0.4, 0.2]
           }}
           transition={{ duration: 12, repeat: Infinity, delay: 4 }}
-          className="absolute top-1/2 left-1/2 w-[400px] h-[400px] bg-purple-600/10 rounded-full blur-[100px] mix-blend-multiply"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[160px] h-[160px] sm:w-[400px] sm:h-[400px] bg-purple-600/10 rounded-full blur-[60px] sm:blur-[100px] mix-blend-multiply"
         />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-20 3xl:px-24 4xl:px-32 relative z-10 max-w-[1920px]">
+      <div className="container mx-auto px-4 sm:px-4 lg:px-8 xl:px-10 2xl:px-12 3xl:px-16 4xl:px-20 relative z-10 max-w-[1920px] w-full overflow-hidden">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="max-w-4xl 3xl:max-w-5xl 4xl:max-w-6xl mx-auto"
+          className="max-w-4xl 3xl:max-w-5xl 4xl:max-w-6xl mr-auto"
         >
-          {/* Content */}
-          <div className="text-center lg:text-left max-w-2xl 3xl:max-w-3xl 4xl:max-w-4xl mx-auto lg:mx-0">
+          {/* Content - left aligned (desktop old design) */}
+          <div className="text-left max-w-2xl 3xl:max-w-3xl 4xl:max-w-4xl">
             <motion.div variants={itemVariants} className="space-y-4 sm:space-y-6 md:space-y-8">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl 2xl:text-7xl font-black text-white leading-tight bg-gradient-to-r from-white via-blue-100 to-[#f39c12] bg-clip-text text-transparent">
+              <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl 2xl:text-7xl font-black text-white leading-tight bg-gradient-to-r from-white via-blue-100 to-[#f39c12] bg-clip-text text-transparent break-words">
                 Empowering Businesses <br className="hidden sm:block" />
                 with <span className="text-[#f39c12]">Technology</span>
               </h1>
 
-              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-blue-100/70 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-blue-100/70 leading-relaxed max-w-xl break-words">
                 Leveraging deep expertise, our team has delivered over 25 software products
                 across diverse industries like agritech, healthcare, ticketing, and real estate.
                 We handle everything, from design to launch and ongoing maintenance.
               </p>
 
-              <div className="flex flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start pt-2">
+              <div className="flex flex-wrap gap-3 sm:gap-4 justify-start pt-2">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Link
                     to="/services"

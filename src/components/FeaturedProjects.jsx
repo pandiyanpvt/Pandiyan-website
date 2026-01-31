@@ -8,7 +8,7 @@ const projects = [
         title: "POS System",
         category: "Retail",
         description: "A comprehensive point of sale system designed to streamline retail operations with real-time inventory management and seamless payment processing.",
-        image: "/projects/pos-system.png",
+        image: "/pos.png",
         color: "bg-blue-500",
         url: "#"
     },
@@ -16,7 +16,7 @@ const projects = [
         title: "DigiMax",
         category: "Digital Solutions",
         description: "A modern digital platform delivering innovative solutions for businesses looking to transform their digital presence.",
-        image: "/projects/digimax.png",
+        image: "/Digimaax.png",
         color: "bg-green-500",
         url: "https://digimaax.com/"
     },
@@ -25,7 +25,7 @@ const projects = [
         title: "JSCarWash",
         category: "Automotive",
         description: "An efficient car wash management system that helps businesses manage bookings, services, and customer relationships seamlessly.",
-        image: "/projects/jscarwash.png",
+        image: "/jscarwash.png",
         color: "bg-purple-500",
         url: "https://www.jscarwash.com/"
     },
@@ -33,7 +33,7 @@ const projects = [
         title: "JSmart",
         category: "Smart Solutions",
         description: "An intelligent platform providing smart solutions for modern businesses, combining automation and analytics for optimal performance.",
-        image: "/projects/jsmart.png",
+        image: "/jsmart.png",
         color: "bg-orange-500",
         url: "https://jsmart.com.au/"
     }
@@ -51,7 +51,7 @@ export default function FeaturedProjects() {
 
     return (
         <Section id="projects" title="Recent Projects">
-            <div className="max-w-6xl 3xl:max-w-7xl 4xl:max-w-8xl mx-auto">
+            <div className="max-w-6xl 3xl:max-w-7xl 4xl:max-w-8xl mx-auto w-full min-w-0 overflow-hidden">
                 {/* Carousel View */}
                 <AnimatePresence mode="wait">
                     <motion.div
@@ -60,53 +60,51 @@ export default function FeaturedProjects() {
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: -100 }}
                         transition={{ duration: 0.5 }}
-                        className="bg-white border-2 border-neutral-200 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl"
+                        className="bg-white border-2 border-neutral-200 rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl w-full min-h-[380px] sm:min-h-0 sm:h-[360px] md:h-[400px] flex flex-col sm:flex-row"
                     >
-                        <div className="md:flex">
-                            <div className="md:w-1/2">
-                                <img
-                                    src={projects[activeProject].image}
-                                    alt={projects[activeProject].title}
-                                    className="w-full h-48 xs:h-56 sm:h-64 md:h-full object-cover"
-                                />
+                        <div className="w-full sm:w-2/5 sm:min-w-[180px] md:w-2/5 h-40 sm:h-full flex-shrink-0 overflow-hidden bg-neutral-100">
+                            <img
+                                src={projects[activeProject].image}
+                                alt={projects[activeProject].title}
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+                        <div className="flex-1 p-4 sm:p-5 md:p-6 flex flex-col justify-center overflow-hidden min-w-0">
+                            <div className="flex items-center mb-3 sm:mb-5">
+                                {[...Array(5)].map((_, i) => (
+                                    <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 2xl:w-8 2xl:h-8 text-yellow-400 fill-current shrink-0" />
+                                ))}
                             </div>
-                            <div className="md:w-1/2 p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 2xl:p-16">
-                                <div className="flex items-center mb-3 sm:mb-4">
-                                    {[...Array(5)].map((_, i) => (
-                                        <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 2xl:w-8 2xl:h-8 text-yellow-400 fill-current" />
-                                    ))}
-                                </div>
-                                <div className="mb-3 sm:mb-4">
-                                    <span className="px-3 py-1 sm:px-4 sm:py-2 md:px-5 md:py-2.5 bg-yellow-400/10 text-yellow-600 rounded-full text-[10px] xs:text-xs sm:text-sm md:text-base lg:text-lg 2xl:text-xl font-black uppercase tracking-widest border border-yellow-400/20">
-                                        {projects[activeProject].category}
-                                    </span>
-                                </div>
-                                <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black text-neutral-900 mb-3 sm:mb-4">
-                                    {projects[activeProject].title}
-                                </h3>
-                                <p className="text-sm sm:text-base md:text-lg lg:text-xl 2xl:text-2xl text-neutral-600 mb-4 sm:mb-6 leading-relaxed">
-                                    {projects[activeProject].description}
-                                </p>
-                                {projects[activeProject].url && (
-                                    <motion.a
-                                        href={projects[activeProject].url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        className="inline-flex items-center text-yellow-500 font-bold group"
-                                    >
-                                        View Project
-                                        <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                                    </motion.a>
-                                )}
+                            <div className="mb-3 sm:mb-5">
+                                <span className="px-3 py-1 sm:px-4 sm:py-2 md:px-5 md:py-2.5 bg-yellow-400/10 text-yellow-600 rounded-full text-[10px] xs:text-xs sm:text-sm md:text-base lg:text-lg 2xl:text-xl font-black uppercase tracking-widest border border-yellow-400/20 inline-block">
+                                    {projects[activeProject].category}
+                                </span>
                             </div>
+                            <h3 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black text-neutral-900 mb-3 sm:mb-5 break-words">
+                                {projects[activeProject].title}
+                            </h3>
+                            <p className="text-sm sm:text-base md:text-lg text-neutral-600 mb-4 sm:mb-5 leading-relaxed line-clamp-3 break-words">
+                                {projects[activeProject].description}
+                            </p>
+                            {projects[activeProject].url && (
+                                <motion.a
+                                    href={projects[activeProject].url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    className="inline-flex items-center text-yellow-500 font-bold group w-fit"
+                                >
+                                    View Project
+                                    <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform shrink-0" />
+                                </motion.a>
+                            )}
                         </div>
                     </motion.div>
                 </AnimatePresence>
 
                 {/* Navigation Dots */}
-                <div className="flex justify-center mt-8 space-x-2">
+                <div className="flex justify-center mt-12 space-x-2">
                     {projects.map((_, index) => (
                         <button
                             key={index}

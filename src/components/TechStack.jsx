@@ -37,16 +37,16 @@ export default function TechStack() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
-                className="grid grid-cols-2 md:grid-cols-4 gap-6"
+                className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8"
             >
                 {techs.map((tech, idx) => (
                     <motion.div
                         key={idx}
                         variants={itemVariants}
-                        className="p-6 rounded-2xl bg-white border border-neutral-100 hover:border-yellow-400 transition-all flex flex-col items-center justify-center text-center group active:scale-95 shadow-sm hover:shadow-md"
+                        className="p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl bg-white border border-neutral-100 hover:border-yellow-400 transition-all flex flex-col items-center justify-center text-center group active:scale-95 shadow-sm hover:shadow-md"
                     >
-                        <div className="text-neutral-900 font-black text-xl mb-1 group-hover:text-yellow-400 transition-colors uppercase tracking-widest">{tech.name}</div>
-                        <div className="text-neutral-500 text-[10px] uppercase font-bold tracking-[0.2em]">{tech.category}</div>
+                        <div className="text-neutral-900 font-black text-base sm:text-lg md:text-xl mb-0.5 sm:mb-1 group-hover:text-yellow-400 transition-colors uppercase tracking-widest">{tech.name}</div>
+                        <div className="text-neutral-500 text-[9px] sm:text-[10px] uppercase font-bold tracking-[0.2em]">{tech.category}</div>
                     </motion.div>
                 ))}
             </motion.div>

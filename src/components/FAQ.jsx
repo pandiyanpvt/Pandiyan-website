@@ -26,16 +26,16 @@ export default function FAQ() {
 
     return (
         <Section id="faq" title="Common Questions">
-            <div className="max-w-3xl mx-auto space-y-4">
+            <div className="max-w-3xl mx-auto space-y-4 sm:space-y-5 w-full min-w-0">
                 {faqs.map((faq, idx) => (
-                    <div key={idx} className="border border-neutral-100 rounded-2xl overflow-hidden bg-white shadow-sm">
+                    <div key={idx} className="border border-neutral-100 rounded-xl sm:rounded-2xl overflow-hidden bg-white shadow-sm">
                         <button
                             onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
-                            className="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-neutral-50 transition-colors"
+                            className="w-full px-4 py-4 sm:px-6 sm:py-5 text-left flex justify-between items-center gap-3 hover:bg-neutral-50 transition-colors min-w-0"
                         >
-                            <span className="font-bold text-neutral-900">{faq.question}</span>
-                            <span className={`transform transition-transform duration-300 text-yellow-500 ${openIndex === idx ? 'rotate-180' : ''}`}>
-                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <span className="font-bold text-neutral-900 text-sm sm:text-base text-left break-words flex-1">{faq.question}</span>
+                            <span className={`shrink-0 transform transition-transform duration-300 text-yellow-500 ${openIndex === idx ? 'rotate-180' : ''}`}>
+                                <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                                 </svg>
                             </span>
@@ -48,7 +48,7 @@ export default function FAQ() {
                                     exit={{ height: 0, opacity: 0 }}
                                     transition={{ duration: 0.3 }}
                                 >
-                                    <div className="px-6 pb-6 text-neutral-600 leading-relaxed">
+                                    <div className="px-4 pb-4 sm:px-6 sm:pb-6 text-neutral-600 leading-relaxed text-sm sm:text-base">
                                         {faq.answer}
                                     </div>
                                 </motion.div>

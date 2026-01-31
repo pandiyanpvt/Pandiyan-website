@@ -59,19 +59,19 @@ export default function Process() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-100px" }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 lg:gap-14"
                 >
                     {steps.map((step, idx) => (
                         <motion.div key={idx} variants={stepVariants} className="relative group">
-                            <div className="mb-6">
-                                <div className="w-16 h-16 rounded-2xl bg-neutral-100 border border-neutral-200 flex items-center justify-center text-2xl font-black text-yellow-400 group-hover:bg-yellow-400 group-hover:text-black transition-all duration-500 shadow-xl group-hover:shadow-yellow-400/20 group-hover:scale-110">
+                            <div className="mb-4 sm:mb-6">
+                                <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl sm:rounded-2xl bg-neutral-100 border border-neutral-200 flex items-center justify-center text-lg sm:text-xl lg:text-2xl font-black text-yellow-400 group-hover:bg-yellow-400 group-hover:text-black transition-all duration-500 shadow-xl group-hover:shadow-yellow-400/20 group-hover:scale-110">
                                     {step.number}
                                 </div>
                             </div>
-                            <h3 className="text-xl font-bold text-neutral-900 mb-4 group-hover:text-yellow-400 transition-colors uppercase tracking-tight">
+                            <h3 className="text-lg sm:text-xl font-bold text-neutral-900 mb-2 sm:mb-4 group-hover:text-yellow-400 transition-colors uppercase tracking-tight">
                                 {step.title}
                             </h3>
-                            <p className="text-neutral-600 leading-relaxed text-sm">
+                            <p className="text-neutral-600 leading-relaxed text-xs sm:text-sm">
                                 {step.description}
                             </p>
                         </motion.div>
