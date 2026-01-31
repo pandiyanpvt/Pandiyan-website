@@ -89,19 +89,19 @@ function ClientLogo({ client, index }) {
 export default function OurClients() {
     return (
         <Section id="clients" title="Our Clients">
-            <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto">
+            <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto w-full overflow-x-hidden">
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="text-center text-neutral-600 text-sm sm:text-base md:text-lg lg:text-xl 2xl:text-2xl mb-8 sm:mb-10 md:mb-12 max-w-2xl 3xl:max-w-3xl mx-auto px-4 sm:px-6 md:px-8 leading-relaxed"
+                    className="text-center text-neutral-600 text-sm sm:text-base md:text-lg lg:text-xl 2xl:text-2xl mb-10 sm:mb-12 md:mb-16 max-w-2xl 3xl:max-w-3xl mx-auto px-4 sm:px-6 md:px-8 leading-relaxed"
                 >
                     We're proud to partner with innovative companies across various industries, delivering exceptional results that drive their success.
                 </motion.p>
 
                 {/* Client Logos Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-10 xl:gap-12 max-w-4xl 3xl:max-w-5xl 4xl:max-w-6xl mx-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-14 max-w-4xl 3xl:max-w-5xl 4xl:max-w-6xl mx-auto">
                     {clients.map((client, index) => (
                         <ClientLogo key={index} client={client} index={index} />
                     ))}
@@ -113,7 +113,7 @@ export default function OurClients() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.4 }}
-                    className="mt-8 sm:mt-12 md:mt-16 lg:mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 lg:gap-10"
+                    className="mt-10 sm:mt-14 md:mt-20 lg:mt-24 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-10 lg:gap-12"
                 >
                     <div className="text-center">
                         <div className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl 3xl:text-8xl font-black text-yellow-500 mb-1 sm:mb-2">20+</div>

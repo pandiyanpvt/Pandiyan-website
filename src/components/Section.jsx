@@ -7,13 +7,13 @@ export default function Section({ id, title, subtitle, children, className = "" 
       <div className="absolute inset-0 opacity-[0.05] pointer-events-none"
         style={{ backgroundImage: 'radial-gradient(currentColor 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
-      <div className="relative z-10 mx-auto max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl px-4 xs:px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 3xl:px-24 4xl:px-32 py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32 3xl:py-40">
+      <div className="relative z-10 mx-auto max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl px-4 sm:px-5 lg:px-8 xl:px-10 2xl:px-12 3xl:px-16 4xl:px-20 py-10 sm:py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32 3xl:py-40 4xl:py-44 w-full overflow-x-hidden">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-8 sm:mb-12 md:mb-16 lg:mb-20"
+          className="mb-10 sm:mb-14 md:mb-20 lg:mb-24 xl:mb-28"
         >
           {subtitle ? (
             <>

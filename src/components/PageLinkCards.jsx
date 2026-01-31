@@ -12,16 +12,16 @@ const pages = [
 export default function PageLinkCards() {
     return (
         <Section title="Explore Pandiyan" subtitle="Everything you need to know about our ecosystem">
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
                 {pages.map((p, i) => (
                     <Link
                         key={i}
                         to={p.path}
-                        className="group p-8 rounded-3xl bg-white border border-neutral-100 hover:border-yellow-400 hover:shadow-2xl hover:shadow-yellow-400/5 transition-all duration-300"
+                        className="group p-5 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl bg-white border border-neutral-100 hover:border-yellow-400 hover:shadow-2xl hover:shadow-yellow-400/5 transition-all duration-300"
                     >
-                        <div className="text-4xl md:text-5xl mb-4 group-hover:scale-110 transition-transform duration-300 inline-block">{p.icon}</div>
-                        <h3 className="text-2xl md:text-3xl font-bold text-neutral-900 mb-3 group-hover:text-yellow-600 transition-colors uppercase tracking-tight">{p.title}</h3>
-                        <p className="text-base md:text-lg text-neutral-500 leading-relaxed">{p.desc}</p>
+                        <div className="text-3xl sm:text-4xl md:text-5xl mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300 inline-block">{p.icon}</div>
+                        <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-neutral-900 mb-3 sm:mb-4 group-hover:text-yellow-600 transition-colors uppercase tracking-tight">{p.title}</h3>
+                        <p className="text-sm sm:text-base md:text-lg text-neutral-500 leading-relaxed">{p.desc}</p>
                     </Link>
                 ))}
             </div>

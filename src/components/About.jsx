@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import Section from "./Section.jsx";
 
 export default function About() {
   return (
-    <section id="about" className="relative bg-white py-24 md:py-32 overflow-hidden transition-colors duration-300">
+    <section id="about" className="relative bg-white py-28 md:py-36 overflow-hidden transition-colors duration-300">
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-24 h-full hidden xl:flex flex-col items-center justify-center border-r border-neutral-100">
         <div className="rotate-180 [writing-mode:vertical-rl] text-xs font-bold tracking-[0.3em] text-neutral-300 uppercase">
@@ -18,8 +19,8 @@ export default function About() {
         </span>
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pl-4 xl:pl-32">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+      <div className="relative z-10 mx-auto max-w-7xl px-3 sm:px-4 lg:px-6 pl-3 xl:pl-24">
+        <div className="grid lg:grid-cols-2 gap-20 lg:gap-28 items-start">
           {/* Left Column: Heading */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -27,7 +28,7 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="flex items-center gap-4 mb-6">
+            <div className="flex items-center gap-4 mb-8">
               <div className="h-1 w-12 bg-yellow-400"></div>
               <span className="text-sm font-bold uppercase tracking-widest text-neutral-500">Who We Are</span>
             </div>
@@ -44,7 +45,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-8"
+            className="space-y-10"
           >
             <p className="text-lg md:text-xl text-neutral-600 leading-relaxed font-light">
               We believe that great software is born from clear thinking and bold execution. At Pandiyan, we don't just write code; we architect digital futures.
@@ -54,10 +55,10 @@ export default function About() {
             </p>
 
             <div className="pt-4">
-              <a href="#contact" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-neutral-900 hover:text-yellow-400 transition-colors group">
+              <Link to="/contact" className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-neutral-900 hover:text-yellow-400 transition-colors group">
                 Start a conversation
                 <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-              </a>
+              </Link>
             </div>
           </motion.div>
         </div>

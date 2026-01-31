@@ -1,7 +1,12 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import PrivacyPolicyModal from './PrivacyPolicyModal';
+import TermsOfServiceModal from './TermsOfServiceModal';
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
+    const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
+    const [isTermsOpen, setIsTermsOpen] = useState(false);
 
     const links = {
         Company: [
@@ -24,10 +29,28 @@ export default function Footer() {
         ]
     };
 
+    const contactInfo = [
+        {
+            label: "pandiyanpvt@gmail.com",
+            href: "mailto:pandiyanpvt@gmail.com",
+            type: "email"
+        },
+        {
+            label: "+94 74 315 0590",
+            href: "tel:+94743150590",
+            type: "phone"
+        },
+        {
+            label: "View on Maps",
+            href: "https://www.google.com/maps/place/THE+PANDIYAN+PVT+Ltd/@9.7950922,80.0407255,17z/data=!3m1!4b1!4m6!3m5!1s0x3affab004d911319:0xeeafa0aedec3c4c8!8m2!3d9.7950922!4d80.0407255!16s%2Fg%2F11yxw88vw3",
+            type: "location"
+        },
+    ];
+
     return (
-        <footer className="bg-neutral-50 pt-12 sm:pt-16 md:pt-20 lg:pt-24 2xl:pt-32 pb-6 sm:pb-8 md:pb-10 lg:pb-12 border-t border-neutral-200 transition-colors duration-300">
-            <div className="mx-auto max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl px-4 xs:px-6 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 3xl:px-24 4xl:px-32">
-                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 mb-8 sm:mb-12 md:mb-16 lg:mb-20">
+        <footer className="bg-neutral-50 pt-16 sm:pt-20 md:pt-24 lg:pt-28 2xl:pt-36 pb-8 sm:pb-10 md:pb-12 lg:pb-14 border-t border-neutral-200 transition-colors duration-300">
+            <div className="mx-auto w-full max-w-[96%] sm:max-w-[97%] lg:max-w-[98%] 2xl:max-w-[99%] px-3 sm:px-4 lg:px-6 xl:px-8">
+                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 sm:gap-10 md:gap-12 lg:gap-14 xl:gap-20 mb-10 sm:mb-14 md:mb-18 lg:mb-24">
                     <div className="col-span-2">
                         <Link to="/" className="flex items-center gap-2 sm:gap-3 group mb-4 sm:mb-6">
                             <div className="flex items-center justify-center transform group-hover:scale-110 transition-all duration-300">
@@ -59,6 +82,24 @@ export default function Footer() {
                             </ul>
                         </div>
                     ))}
+
+                    <div className="col-span-1">
+                        <h4 className="text-neutral-900 font-bold mb-3 sm:mb-4 md:mb-6 uppercase tracking-widest text-xs xs:text-xs sm:text-sm md:text-sm lg:text-base 2xl:text-lg">Contact</h4>
+                        <ul className="space-y-2 sm:space-y-3 md:space-y-4">
+                            {contactInfo.map((contact) => (
+                                <li key={contact.label}>
+                                    <a
+                                        href={contact.href}
+                                        target={contact.type === 'location' ? '_blank' : undefined}
+                                        rel={contact.type === 'location' ? 'noopener noreferrer' : undefined}
+                                        className="text-neutral-500 hover:text-yellow-400 transition-colors text-xs xs:text-xs sm:text-sm md:text-sm lg:text-base 2xl:text-lg font-medium"
+                                    >
+                                        {contact.label}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
 
                 <div className="pt-6 sm:pt-8 md:pt-10 lg:pt-12 border-t border-neutral-200 flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6">
@@ -66,11 +107,25 @@ export default function Footer() {
                         © {currentYear} Pandiyan Software Solutions. All rights reserved.
                     </p>
                     <div className="flex gap-4 sm:gap-6 md:gap-8">
-                        <Link to="/privacy-policy" className="text-neutral-500 hover:text-neutral-900 text-[10px] xs:text-[10px] sm:text-xs md:text-xs lg:text-sm 2xl:text-base uppercase tracking-widest font-bold">Privacy Policy</Link>
-                        <Link to="/terms-of-service" className="text-neutral-500 hover:text-neutral-900 text-[10px] xs:text-[10px] sm:text-xs md:text-xs lg:text-sm 2xl:text-base uppercase tracking-widest font-bold">Terms of Service</Link>
+                        <button
+                            onClick={() => setIsPrivacyOpen(true)}
+                            className="text-neutral-500 hover:text-neutral-900 text-[10px] xs:text-[10px] sm:text-xs md:text-xs lg:text-sm 2xl:text-base uppercase tracking-widest font-bold transition-colors"
+                        >
+                            Privacy Policy
+                        </button>
+                        <button
+                            onClick={() => setIsTermsOpen(true)}
+                            className="text-neutral-500 hover:text-neutral-900 text-[10px] xs:text-[10px] sm:text-xs md:text-xs lg:text-sm 2xl:text-base uppercase tracking-widest font-bold transition-colors"
+                        >
+                            Terms of Service
+                        </button>
                     </div>
                 </div>
             </div>
+
+            {/* Modals */}
+            <PrivacyPolicyModal isOpen={isPrivacyOpen} onClose={() => setIsPrivacyOpen(false)} />
+            <TermsOfServiceModal isOpen={isTermsOpen} onClose={() => setIsTermsOpen(false)} />
         </footer>
     );
 }

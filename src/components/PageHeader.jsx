@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 
 export default function PageHeader({ title, subtitle }) {
     return (
-        <section className="relative pt-32 pb-12 bg-white">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-12 text-center">
+        <section className="relative pt-24 pb-8 bg-white">
+            <div className="container mx-auto px-3 sm:px-4 lg:px-8 text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
